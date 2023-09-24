@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MidAutumn</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="assets/vid&img/logo1.jpg" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <a href="#" class="logo">SA</a>
+        <ul>
+            <li><a href="index.html" id="active" class="mainchoice" onclick="backgroundcolor()">Home</a></li>
+            <li><a href="account.html" class="mainchoice" onclick="backgroundcolor()">Account</a></li>
+            <li><a href="form.html" class="mainchoice" onclick="backgroundcolor()">Work</a></li>
+            <li><a href="contact.html" class="mainchoice" onclick="backgroundcolor()">Contact</a></li>
+        </ul>
+    </header>
+    <div id="video">
+        <!-- <video class="vid" src="assets/vid&img/fall_-_23881 (1080p).mp4" autoplay muted loop ></video> -->
+        <img src="assets/vid&img/30125243_7617581.jpg" class="vid" alt="">
+    </div>
+    <div id="card">
+        <div class="wrapper">
+            <h1>Sign Up</h1>
+            <div class="form">
+                <form action="">
+                    <div class="inputbox">
+                        <input type="email" required id="email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <input type="password" required id="pass">
+                        <label for="pass">Password</label>
+                        <small></small>
+                        <span></span>
+                    </div>
+                    <button id="sub">Log In</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+    
+</body>
+<!-- <scrip src="assets/js/main.js"></script> -->
+<script>
+    var login_form = document.querySelector("form")
+    console.log(login_form)
+    var email = document.querySelector("#email")
+    var password = document.querySelector("#pass")
+    let small = document.querySelector('small')
+    login_form.addEventListener('submit',function(e){
+        e.preventDefault()
+        let flag = false
+        let user_email_list = JSON.parse(localStorage.getItem("user_email_list")) || []
+        let user_password_list = JSON.parse(localStorage.getItem("user_password_list")) || []
+        for(let key in user_email_list ) {
+            // Thành công
+            if ( email.value == user_email_list[key] && password.value == user_password_list[key] ) {
+                flag = true
+                window.location.href = 'index.html'
+            }
+        }
+        if(flag==false){
+            small.innerText = 'Password or Email is invalid'
+        }
+
+
+    })
+
+</script>
+</html>
